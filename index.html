@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>City of Seattle Dataset Generator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div class="content-area">
+        <h1>City of Seattle Dataset Generator</h1>
+        <div class="text-area">
+           <p>
+            Will generate the data from the City of Seattle: <a href="data.seattle.gov">data.seattle.gov</a>. 
+        </p> 
+        <p>
+            The process is exemplified using a dataset
+            from the webpages, <a href="https://data.seattle.gov/City-Business/City-of-Seattle-Webstats-All-domains/vtyv-f9qh">City of Seattle Webstats</a> and <a href="https://data.seattle.gov/City-Business/-vehicles-sold-by-dept/6s5n-9e8v">% vehicles sold by dept</a>. 
+        </p>
+
+        <p>
+            The user can select a dataset from the options. Each has a value that is the URL for the json page for that dataset. On the JavaScript side, I use this URL to get the JSON data from that page. Then I keep track of the important information that shows up on the columns (under the "columns" json array object, any index with an id != -1 is recorded. Then, it iterates through each JSON object in "data", using the important indexes we recorded from "columns" to pull out the information we want from the objects, and output them in a list. This way, you can visualize what each row's important information is fairly quickly, and can switch between different datasets with ease. 
+        </p> 
+    </div>
+    <select>
+        <option value="https://data.seattle.gov/api/views/vtyv-f9qh/rows.json?">
+            City of Seattle Webstats 	
+        </option>
+        <option value="https://data.seattle.gov/api/views/6s5n-9e8v/rows.json?">
+            % vehicles sold by dept
+        </option>
+    </select> 
+    <button>Generate Data</button>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/dataGetter.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+body {
+    background-color: #336699;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
+}
+
+
+.content-area {
+    max-width: 900px;
+    margin: 1em auto;
+    font-family: 'Times New Roman', sans-serif;
+}
+
+
+
+a {
+	color: #996600;
+}
+
+button {
+    background-color: #ff6666;
+}
+h1{
+     font-family: 'Optima', sans-serif;
+}   
+.content-area li{
+    text-transform: lowercase;
+    margin-bottom: 1em;
+}
+.name{
+    font-weight: bold;   
+}
+
+
