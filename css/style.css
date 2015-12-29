@@ -15,7 +15,10 @@ body {
     font-family: 'Times New Roman', sans-serif;
 }
 
-
+td {
+    border: black 2px solid;
+    padding: 5px;
+}
 
 a {
 	color: #996600;

@@ -1,7 +1,7 @@
 (function ($) {
     $('button').on('click', function () {
         // will clear the current content area in case you are generating a new dataset
-        $('.content-area ul').remove();
+        $('.content-area table').remove();
         // add spinner for loading
         $('<i class="fa fa-spin"/>').appendTo('body');
         
@@ -28,29 +28,39 @@
             }
 
 
-            // where we will store list of information we want to print
-            var dataObjects = [];
-            var $ul;
-            
-            $.each(urlData, function (key, val) {
-                //iterate through the different rows and build a list
-                var results = '<li id="' + key + '">';
+            // where we will store table of information we want to print
+            var $table;
+
+            // Create the header row of the table
+            var resultTable = "<thead><tr>";
+            // pull relevant column names using indexes array
+            for (var i = 0; i < indexes.length; i++) {
+                resultTable = resultTable + "<th>" + col_names[indexes[i]] + "</th>";
+            }
+            resultTable = resultTable + "</tr></thead>";
+
+            // Create the body of the table
+            var results = "<tbody>";
+             $.each(urlData, function (key, val) {
+                results = results + "<tr>";
+                //iterate through the different rows and build the rows in the table
                 for (var i = 0; i < indexes.length; i++) {
-                    results = results + '<span class="' + col_names[indexes[i]] + '">' + 
-                    col_names[indexes[i]] + ': ' + val[indexes[i]] + '</span><br>';
+                    results = results + '<td>' + val[indexes[i]] + '</td>';
                 }
-                results = results + '</li>';
-                dataObjects.push(results);
+                results = results + "</tr>";
             });
+             resultTable = resultTable + results + "</tbody>";
+
+
             
             // remove spinner from page
             $('.fa-spin').remove();
             
-            // append list to page
-            $ul = $('<ul />').appendTo('.content-area');
+            // append table to page
+            $table = $('<table />').appendTo('.content-area');
             
             //append data objects we want to appear to list
-            $ul.append(dataObjects);
+            $table.append(resultTable);
         });
 });
 }(jQuery));
